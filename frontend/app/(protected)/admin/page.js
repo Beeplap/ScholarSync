@@ -67,7 +67,6 @@ export default function AdminPage() {
     batchBreakdown: [],
   });
 
-  // Modal States
   const [showAddUser, setShowAddUser] = useState(false);
   const [addUserRole, setAddUserRole] = useState("student");
 
