@@ -810,7 +810,7 @@ export default function AdminPage() {
         return;
       }
 
-      // Build query - fetch all records for the batch (date filter handled on frontend)
+      // Build query - fetch all records for the batch (date filter handled in the UI)
       let query = supabase
         .from("attendance")
         .select(

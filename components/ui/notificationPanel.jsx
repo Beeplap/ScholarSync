@@ -64,7 +64,7 @@ export default function NotificationPanel({ open, onClose, onNotificationSent })
       if (!response.ok) {
         if (result.needsMigration) {
           setError(
-            `Database migration required. Please run the SQL migration: ${result.sql || "See frontend/migrations/create_notifications_table.sql"}`
+            `Database migration required. Please run the SQL migration: ${result.sql || "See migrations/create_notifications_table.sql"}`
           );
         } else {
           setError(result.error || "Failed to send notification");

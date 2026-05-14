@@ -115,7 +115,7 @@ export async function POST(req) {
           {
             error: "Notifications table not found. Please run the migration SQL first.",
             needsMigration: true,
-            sql: "See frontend/migrations/create_notifications_table.sql"
+            sql: "See migrations/create_notifications_table.sql"
           },
           { status: 500 }
         );

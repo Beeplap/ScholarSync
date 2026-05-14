@@ -83,7 +83,7 @@ export async function GET(request) {
     const results = electives.map((subject) => ({
       ...subject,
       selected: selectedIds.has(subject.id),
-      disabled: false // Can add logic here if limit reached etc, but frontend can handle
+      disabled: false // Can add logic here if limit reached etc, but the UI can handle it
     }));
 
     return NextResponse.json({ 

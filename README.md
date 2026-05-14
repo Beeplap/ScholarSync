@@ -10,23 +10,20 @@ ScholarSync is a comprehensive college management system designed to streamline 
 
 ```
 scholarSync/
-├── frontend/          # Next.js application (client + API routes)
-│   ├── app/           # App router pages & layouts
-│   ├── components/    # React components
-│   │   ├── dashboard/ # Feature-specific components
-│   │   └── ui/        # Reusable UI primitives
-│   ├── lib/           # Utilities, Supabase client
-│   └── app/api/       # API routes
-├── backend/           # Optional server-side services
+├── app/               # Next.js App Router pages, layouts, and API routes
+├── components/        # React components
+│   ├── dashboard/     # Feature-specific components
+│   └── ui/            # Reusable UI primitives
+├── hooks/             # Shared React hooks
+├── lib/               # Utilities, Supabase client
 └── supabase_*.sql     # Database schemas
 ```
 
 ## Quick Start
 
-### Frontend Setup
+### Setup
 
 ```bash
-cd frontend
 npm install
 npm run dev
 ```
@@ -35,7 +32,7 @@ The app runs at [http://localhost:3000](http://localhost:3000).
 
 ### Environment Variables
 
-Create `frontend/.env.local`:
+Create `.env.local`:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
@@ -52,7 +49,7 @@ For the daily Supabase keep-alive cron:
 CRON_SECRET=choose_a_long_random_secret
 ```
 
-When deployed on Vercel, `frontend/vercel.json` calls `/api/keep-alive` once per day at 00:00 UTC. The route performs a lightweight server-side query against Supabase so the database sees activity. If `CRON_SECRET` is configured in Vercel, Vercel sends it as a bearer token and the route rejects other callers.
+When deployed on Vercel, `vercel.json` calls `/api/keep-alive` once per day at 00:00 UTC. The route performs a lightweight server-side query against Supabase so the database sees activity. If `CRON_SECRET` is configured in Vercel, Vercel sends it as a bearer token and the route rejects other callers.
 
 ## Technology Stack
 
