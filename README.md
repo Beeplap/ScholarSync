@@ -47,6 +47,13 @@ For admin/teacher APIs that need elevated access:
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
+For the daily Supabase keep-alive cron:
+```
+CRON_SECRET=choose_a_long_random_secret
+```
+
+When deployed on Vercel, `frontend/vercel.json` calls `/api/keep-alive` once per day at 00:00 UTC. The route performs a lightweight server-side query against Supabase so the database sees activity. If `CRON_SECRET` is configured in Vercel, Vercel sends it as a bearer token and the route rejects other callers.
+
 ## Technology Stack
 
 - **Frontend**: Next.js 14, React 18, Tailwind CSS, Radix UI, Headless UI, Lucide Icons

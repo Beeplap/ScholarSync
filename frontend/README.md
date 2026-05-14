@@ -32,6 +32,8 @@ Create a `.env.local` file in the `frontend` directory with the following variab
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+CRON_SECRET=choose_a_long_random_secret
 ```
 
 #### How to Get Your Supabase Credentials:
@@ -50,6 +52,12 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## Daily Supabase Keep-Alive
+
+The app includes a Vercel Cron job in `vercel.json` that calls `/api/keep-alive` every day at 00:00 UTC. That route runs a tiny server-side Supabase query to keep the database active.
+
+Set `SUPABASE_SERVICE_ROLE_KEY` and `CRON_SECRET` in your deployment environment. When `CRON_SECRET` exists, Vercel automatically sends it in the `Authorization` header for cron requests, and the route rejects requests without the matching bearer token.
 
 ## Available Scripts
 
